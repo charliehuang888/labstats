@@ -23,23 +23,6 @@ CREATE TABLE `staff` (
     PRIMARY KEY (`user`)
 ) ENGINE=InnoDB;
 
-CREATE TABLE `printer_pages` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `date` datetime NOT NULL,
-    `printer` varchar(255) NOT NULL,
-    `value` int(11) NOT NULL,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
-CREATE TABLE `printer_toner` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `date` datetime NOT NULL,
-    `printer` varchar(255) NOT NULL,
-    `value` int(11) NOT NULL,
-    `max` int(11) NOT NULL,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB;
-
 CREATE VIEW `session_duration` AS
     SELECT *, timediff(`end`, `start`) AS `duration` FROM `session`;
 
@@ -61,12 +44,6 @@ CREATE VIEW `staff_in_lab_public` AS
     SELECT `user`, `host`, `start` FROM `users_in_lab` WHERE `user` IN (
         SELECT `user` FROM `staff`
     );
-
-CREATE VIEW `printer_pages_public` AS
-    SELECT `id`, `date`, `printer`, `value` FROM `printer_pages`;
-
-CREATE VIEW `printer_toner_public` AS
-    SELECT `id`, `date`, `printer`, `value`, `max` FROM `printer_toner`;
 
 CREATE VIEW `daily_sessions_public` AS
     SELECT
