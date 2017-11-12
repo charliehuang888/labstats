@@ -1,0 +1,10 @@
+#!/bin/bash -e
+export PYTHONPATH=/opt/stats/labstats
+
+/opt/stats/labstats/printing/current_toner.py
+/opt/stats/labstats/printing/lifetime_pages.py
+
+tmp=$(mktemp)
+/opt/stats/labstats/printing/pages_per_day.py > "$tmp"
+chmod 644 "$tmp"
+mv "$tmp" /opt/stats/var/mystoracle

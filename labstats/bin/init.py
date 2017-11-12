@@ -23,6 +23,23 @@ CREATE TABLE `staff` (
     PRIMARY KEY (`user`)
 ) ENGINE=InnoDB;
 
+CREATE TABLE `printer_pages` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `date` datetime NOT NULL,
+    `printer` varchar(255) NOT NULL,
+    `value` int(11) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
+CREATE TABLE `printer_toner` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `date` datetime NOT NULL,
+    `printer` varchar(255) NOT NULL,
+    `value` int(11) NOT NULL,
+    `max` int(11) NOT NULL,
+    PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+
 CREATE VIEW `session_duration` AS
     SELECT *, timediff(`end`, `start`) AS `duration` FROM `session`;
 
