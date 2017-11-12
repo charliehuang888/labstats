@@ -62,6 +62,12 @@ CREATE VIEW `staff_in_lab_public` AS
         SELECT `user` FROM `staff`
     );
 
+CREATE VIEW `printer_pages_public` AS
+    SELECT `id`, `date`, `printer`, `value` FROM `printer_pages`;
+
+CREATE VIEW `printer_toner_public` AS
+    SELECT `id`, `date`, `printer`, `value`, `max` FROM `printer_toner`;
+
 CREATE VIEW `daily_sessions_public` AS
     SELECT
         COUNT(*) as logins,
